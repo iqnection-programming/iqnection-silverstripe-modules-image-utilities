@@ -1,0 +1,21 @@
+{
+	"name": "iqnection-modules/image-utilities",
+	"description": "IQnection SilverStripe Image Utilities Module",
+	"type": "silverstripe-vendormodule",
+	"license": "BSD-3-Clause",
+	"keywords": ["iqnection","modules","images"],
+	"authors": [
+		{
+			"name": "IQnection",
+            "homepage": "https://www.iqnection.com"
+		}
+	],
+	"require": {
+		"silverstripe/framework": "^4.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"IQnection\\Assets\\": "app/src/"
+		}
+	}
+}
