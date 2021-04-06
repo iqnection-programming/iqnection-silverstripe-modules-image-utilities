@@ -16,7 +16,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"IQnection\\Assets\\": "app/src/"
+			"IQnection\\ImageUtilities\\": "src/"
 		}
 	}
 }

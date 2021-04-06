@@ -1,6 +1,6 @@
 <?php
 
-namespace IQnection\Assets;
+namespace IQnection\ImageUtilities\Assets;
 
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Assets\ImageManipulation;
@@ -10,7 +10,7 @@ use SilverStripe\Assets\Image_Backend;
 class ImageUtilities extends DataExtension implements AssetContainer
 {
 	use ImageManipulation;
-	
+
 	protected function formatCropPosition($position)
 	{
 		$position = preg_replace('/center|middle/','',strtolower($position));
@@ -18,7 +18,7 @@ class ImageUtilities extends DataExtension implements AssetContainer
 		$position = preg_replace('/^-|-$/','',$position);
 		return (empty($position)) ? 'center' : $position;
 	}
-	
+
 	public function FillFrom($width, $height, $position = 'center')
     {
 		$position = $this->formatCropPosition($position);
@@ -36,7 +36,7 @@ class ImageUtilities extends DataExtension implements AssetContainer
 			return $clone;
         });
     }
-	
+
 	public function FillMaxFrom($width, $height, $position = 'center')
     {
 		$position = $this->formatCropPosition($position);
@@ -57,10 +57,10 @@ class ImageUtilities extends DataExtension implements AssetContainer
             // Compare current and destination aspect ratios
             $imageRatio = $currentWidth / $currentHeight;
             $cropRatio = $width / $height;
-			
+
 			$clone = clone $backend;
             $resource = clone $backend->getImageResource();
-			
+
             if ($cropRatio < $imageRatio && $currentHeight < $height) {
                 // Crop off sides
 				$resource->fit(round($currentHeight * $cropRatio), $currentHeight, null, $position);
@@ -71,37 +71,37 @@ class ImageUtilities extends DataExtension implements AssetContainer
                 // Crop on both
 				$resource->fit($width, $height, null, $position);
             }
-			
+
 			$clone->setImageResource($resource);
 			return $clone;
         });
     }
-	
+
 	public function setFromString($data, $filename, $hash = null, $variant = null, $config = array())
 	{
 		return $this->owner->setFromString($data, $filename, $hash = null, $variant = null, $config = array());
 	}
-	
+
 	public function setFromLocalFile($path, $filename = null, $hash = null, $variant = null, $config = array())
 	{
 		return $this->owner->setFromLocalFile($path, $filename = null, $hash = null, $variant = null, $config = array());
 	}
-	
+
 	public function setFromStream($stream, $filename, $hash = null, $variant = null, $config = array())
 	{
 		return $this->owner->setFromStream($stream, $filename, $hash = null, $variant = null, $config = array());
 	}
-	
+
 	public function getVisibility()
 	{
 		return $this->owner->getVisibility();
 	}
-	
+
 	public function deleteFile()
 	{
 		return $this->owner->deleteFile();
 	}
-	
+
 	public function renameFile($newName)
 	{
 		return $this->owner->renameFile($newName);
@@ -136,7 +136,7 @@ class ImageUtilities extends DataExtension implements AssetContainer
 	{
 		return $this->owner->canViewFile();
 	}
-	
+
 	public function getString()
 	{
 		return $this->owner->getString();
