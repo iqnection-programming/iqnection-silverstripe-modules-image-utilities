@@ -3,7 +3,7 @@ Name: iqimageutilities
 ---
 SilverStripe\Assets\Image:
   extensions:
-    - IQnection\Assets\ImageUtilities
+    - IQnection\ImageUtilities\Assets\ImageUtilities
 SilverStripe\Assets\Storage\DBFile:
   extensions:
-    - IQnection\Assets\ImageUtilities
+    - IQnection\ImageUtilities\Assets\ImageUtilities
